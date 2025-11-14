@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+import os
+BASE_DIR = os.path.dirname(__file__)
 
-model = joblib.load("model.pkl")
-scaler = joblib.load("scaler.pkl")
-selector = joblib.load("feature_selector.pkl")
-x_columns = joblib.load("x_column.pkl") 
+model = joblib.load(os.path.join(BASE_DIR, "model.pkl"))
+scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
+selector = joblib.load(os.path.join(BASE_DIR, "feature_selector.pkl"))
+x_columns = joblib.load(os.path.join(BASE_DIR, "x_column.pkl"))
 
 st.sidebar.header("Input Features")
 
