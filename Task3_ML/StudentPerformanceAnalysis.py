@@ -2,19 +2,16 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
-import os
-BASE_DIR = os.path.dirname(__file__)
-
-model = joblib.load(os.path.join(BASE_DIR, "model.pkl"))
-scaler = joblib.load(os.path.join(BASE_DIR, "scaler.pkl"))
-selector = joblib.load(os.path.join(BASE_DIR, "feature_selector.pkl"))
-x_columns = joblib.load(os.path.join(BASE_DIR, "x_column.pkl"))
+ 
+model=joblib.load("Student_model.pkl")
+scaler=joblib.load("Performance_scaler.pkl")
+selector=joblib.load("Selected_features.pkl")
+input=joblib.load("Input_values.pkl")
 
 st.sidebar.header("Input Features")
 
 input_values = {}
-
-for col in x_columns:
+for col in input:
     col_name = str(col)
     input_values[col_name] = st.sidebar.number_input(
         col_name,
